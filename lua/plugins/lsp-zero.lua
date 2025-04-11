@@ -1,0 +1,81 @@
+return {
+    {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
+        dependencies = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
+
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lua' },
+
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' },
+            { 'rafamadriz/friendly-snippets' },
+        },
+        config = function()
+            local lsp_zero = require('lsp-zero')
+
+            lsp_zero.on_attach(function(client, bufnr)
+                -- see :help lsp-zero-keybindings
+                -- to learn the available actions
+                lsp_zero.default_keymaps({ buffer = bufnr })
+
+                -- Add your custom keymaps here if you prefer not to modify keymaps.lua
+                local opts = { buffer = bufnr }
+                local keymap = vim.keymap.set
+                keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+                keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+                keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+                keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+                keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
+            end)
+
+            -- Configure Mason to automatically install LSP servers
+            require('mason').setup({})
+            require('mason-lspconfig').setup({
+                ensure_installed = {
+                    'lua_ls',
+                    -- Add the language servers you want to have installed by default
+                    -- Examples: 'lua_ls', 'pyright', 'tsserver'
+                },
+                handlers = {
+                    lsp_zero.default_setup,
+                },
+            })
+
+            -- Setup nvim-cmp for autocompletion
+            local cmp = require('cmp')
+            local cmp_action = lsp_zero.cmp_action()
+
+            cmp.setup({
+                mapping = cmp.mapping.preset.insert({
+                    ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+                    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+                    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+                    ['<Tab>'] = cmp_action.tab_complete(),
+                    ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
+                }),
+                sources = {
+                    { name = 'nvim_lsp' },
+                    { name = 'luasnip' },
+                    { name = 'buffer' },
+                    { name = 'path' },
+                },
+                snippet = {
+                    expand = function(args)
+                        require('luasnip').lsp_expand(args.body)
+                    end,
+                },
+            })
+        end
+    }
+}
