@@ -22,7 +22,21 @@ return {
         },
         config = function()
             local lsp_zero = require('lsp-zero')
-
+            vim.diagnostic.config({
+                virtual_text = true,
+                signs = true,
+                update_in_insert = false,
+                underline = true,
+                severity_sort = true,
+                float = {
+                    focusable = false,
+                    style = 'minimal',
+                    border = 'rounded',
+                    source = 'always',
+                    header = '',
+                    prefix = '',
+                },
+            })
             lsp_zero.on_attach(function(client, bufnr)
                 -- see :help lsp-zero-keybindings
                 -- to learn the available actions
@@ -36,6 +50,9 @@ return {
                 keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
                 keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
                 keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
+                keymap('n', '<leader>5', vim.diagnostic.open_float, { desc = 'Show error under cursor' })
+                keymap('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous diagnostic' })
+                keymap('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
             end)
 
             -- Configure Mason to automatically install LSP servers
@@ -43,8 +60,6 @@ return {
             require('mason-lspconfig').setup({
                 ensure_installed = {
                     'lua_ls',
-                    -- Add the language servers you want to have installed by default
-                    -- Examples: 'lua_ls', 'pyright', 'tsserver'
                 },
                 handlers = {
                     lsp_zero.default_setup,
