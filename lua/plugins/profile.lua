@@ -11,6 +11,8 @@ return {
             vim.api.nvim_set_hl(0, "ProfileGreen", { fg = "#30cf00" })
             vim.api.nvim_set_hl(0, "ProfileOrange", { fg = "#cf6700" })
             vim.api.nvim_set_hl(0, "ProfileYellow", { fg = "#f5a142" })
+            vim.api.nvim_set_hl(0, "ProfileThemeBg", { fg = vim.fn.synIDattr(vim.fn.hlID("Normal"), "sp") })
+            vim.api.nvim_set_hl(0, "ProfileLightBlue", { fg = "#03d3fc" })
             require("profile").setup({
                 avatar_opts = {
                     force_blank = false,
@@ -76,6 +78,16 @@ return {
                     comp:text_component_render({
                         comp:text_component("think again", "center", "ProfileBlue"),
                     })
+
+                    comp:separator_render()
+                    comp:separator_render()
+                    comp:separator_render()
+                    comp:separator_render()
+
+                    comp:text_component_render({
+                        comp:text_component("www.icodeeverything.com", "center", "ProfileThemeBg"),
+                    })
+
                     -- comp:git_contributions_render("ProfileGreen")
                 end,
             })

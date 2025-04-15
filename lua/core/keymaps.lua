@@ -60,8 +60,8 @@ map("n", "<leader>dw", "<cmd>close<cr>", "Window")
 map('n', 'gx', vim.diagnostic.open_float, "Show diagnostics under cursor")
 
 -- Easier access to beginning and end of lines
-map("n", "<M-h>", "^", "Go to beginning of line")
-map("n", "<M-l>", "$", "Go to end of line")
+map("n", "<M-j>", "^", "Go to beginning of line")
+map("n", "<M-;>", "$", "Go to end of line")
 
 -- Better window navigation
 map("n", "<C-j>", "<C-w><C-j>", "Navigate windows to the left")
@@ -88,8 +88,8 @@ map("n", "<leader>do", buffers.delete_others, "Other buffers")
 map("n", "<leader>da", buffers.delete_all, "All buffers")
 
 -- Navigate buffers
-map("n", "<S-l>", ":bnext<CR>")
-map("n", "<S-h>", ":bprevious<CR>")
+map("n", "<S-;>", ":bnext<CR>")
+map("n", "<S-j>", ":bprevious<CR>")
 
 -- Stay in indent mode
 map("v", "<", "<gv")
