@@ -36,22 +36,45 @@ return {
                     local face_art = {
                         [[                                                                       ]],
                         [[                                                                       ]],
+                        [[                                                                       ]],
+                        [[                                                                       ]],
                         [[             ⠤⣤⣤⣤⣄⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣠⣤⠤⠤⠴⠶⠶⠶⠶        ]],
                         [[            ⢠⣤⣤⡄⣤⣤⣤⠄⣀⠉⣉⣙⠒⠤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠴⠘⣉⢡⣤⡤⠐⣶⡆⢶⠀⣶⣶⡦         ]],
                         [[            ⣄⢻⣿⣧⠻⠇⠋⠀⠋⠀⢘⣿⢳⣦⣌⠳⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠞⣡⣴⣧⠻⣄⢸⣿⣿⡟⢁⡻⣸⣿⡿⠁         ]],
                         [[            ⠈⠃⠙⢿⣧⣙⠶⣿⣿⡷⢘⣡⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⣿⣷⣝⡳⠶⠶⠾⣛⣵⡿⠋⠀⠀         ]],
                         [[            ⠀⠀⠀⠀⠉⠻⣿⣶⠂⠘⠛⠛⠛⢛⡛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠛⠀⠉⠒⠛⠀⠀⠀⠀⠀         ]],
                         [[        ⠀⠀    ⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⢸⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀         ]],
-                        [[        ⠀⠀⠀⠀    ⠀⠀⣿⡇⠀⠀⠀⠀⠀⣾⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀              ]],
+                        [[        ⠀⠀⠀⠀    ⠀⠀⣿⡇⠀⠀⠀⠀⠀⣾⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀              ]]
                         -- [[   ⠀⠀⠀⠀⠀⠀    ⣿⡇⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀              ]],
                         -- [[   ⠀⠀⠀⠀⠀⠀    ⢻⡁⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                         ]],
 
                     }
 
+
+                    -- local face_art = {
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣥⡀⠀⢠⣤⣤⣤⣤⣄⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠘⢎⣿⣿⣿⣿⣿⡆⠈⠀⣿⣆⠀⠏⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣷⡀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣦⡀⠀⠀⠀⠀⠀⠉⠙⠻⢿⣿⣿⣿⣿⣯⣿⣿⣿⣿⣿⣿⣧⠊⠸⣿⣿⣿⣿⣿⡄⠀⢿⡿⠀⠈⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣷⠁⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢠⠀⠀⠱⡀⠀⢤⣤⣄⣀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⢂⢹⣿⣿⣿⣿⣿⣦⡈⢿⠠⠀⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠓⠀⠀⠈⠉⠉⠁⠋⠉⠛⠙⠿⢿⢸⢇⠀⡀⠱⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⢂⢻⣿⣿⣿⣿⣿⣧⠀⠁⢇⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠓⠀⠐⠀⢃⠀⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⢿⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠠⠄⠂⠁⠀⠀⠀⣤⣀⠀⠈⠀⠀⠈⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠛⠀⠈⠛⠿⣿⣿⣿⣿⣷⡄⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠀⠀⠀⠀⠀⡀⢀⡠⢀⣿⣿⣇⠀⠀⢳⡀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⣀⠀⠀⠀⠉⠙⠙⠻⠇⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠀⠀⠀⠀⠀⢄⠀⠀⠀⠀⠈⠀⠀⠉⠀⠼⠿⠿⢿⠄⠀⠀⠁⠀⠘⣹⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣷⡐⢄⠢⢄⠀⠀⠀⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠂⠀⠀⠀⠀⢠⣤⡄⠀⣠⡄⠀⡀⠀⠐⠀⠀⠀⡄⠨⠀⠋⣿⣿⣿⣿⣿⣿⣿⣿⡿⠱⣹⠟⣫⣭⣭⣿⣿⣿⣆⠙⠦⠙⠦⠀⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⡀⠀⠀⠀⠀⠈⠀⠀⠀⣠⢀⣿⡇⣸⣿⣿⡰⣤⣶⠃⠀⠀⠀⠃⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⡿⢀⣴⣿⠞⠉⠀⠀⠀⠀⠀⠉⠓⠀⠀⠀⠀⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣷⡀⠀⠀⠀⠀⠀⣼⣿⠸⢸⣧⣿⣿⣿⣷⣿⡏⠀⢀⠀⠀⢿⣇⢸⣿⣿⣿⣿⣿⣿⣿⣿⡇⡾⠋⠁⠀⠀⠀⠠⠀⠀⣀⠀⠀⠀⠀⠈⠀⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢧⠀⠀⠀⠀⠀⠉⠻⠀⢸⣿⣿⣿⣿⣿⣿⠃⡰⠃⠀⣆⠸⣿⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⣯⠈⠀⠀⠄⠤⣀⠤⢠⣿⣷⡀⠀⠀⠀⠀⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣷⡀⠀⠀⠀⠀⠀⠀⠸⢿⣿⣿⣿⣿⡟⠰⠁⠀⣱⣿⠀⣿⠀⢻⣿⣿⣿⣿⣿⣿⣿⢧⠸⣿⣷⠀⡀⠐⠀⠠⢿⣿⡿⠆⠀⠀⠀⠀⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⡀⠀⠀⠀⠀⠸⣷⡄⠀⠀⠀⠀⠀⣶⣄⠙⠿⣿⣿⡇⢀⢀⣼⣿⣿⠀⣿⠀⢸⣿⣿⣿⣿⣿⣿⣿⣾⠰⣿⡿⣸⣯⠀⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀       ]],
+                    --     [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠀⠀⠀⠀⠘⣿⡀⠀⠀⠀⠀⢹⣿⣦⢀⠘⠟⠁⠀⣾⣿⣿⢇⠀⠇⠂⣸⣿⣿⣿⣿⣿⣿⣿⣿⡀⣿⣿⣿⣏⣾⠯⠀⠀⠀⠀⠀⢂⠀⠀⠀⠀⠀       ]],
+                    --
+                    -- }
+
                     -- Render the face in blue
                     for _, line in ipairs(face_art) do
                         comp:text_component_render({ comp:text_component(line, "center", "ProfileBlue") })
                     end
+
                     local vim_logo = {
                         [[       ████ ██████           █████      ██                     ]],
                         [[      ███████████             █████                             ]],
@@ -69,16 +92,41 @@ return {
                     end
 
                     comp:separator_render()
+                    -- comp:text_component_render({
+                    --     comp:text_component(":(){ :|:& };:", "center", "ProfileRed"),
+                    -- })
+                    --
                     comp:text_component_render({
-                        comp:text_component("if you think i cant see you", "center", "ProfileRed"),
+                        comp:text_component("yes i have a girlfriend", "center", "ProfileBlue"),
                     })
+
+                    --
                     -- Rest of your format function remains the same
                     comp:separator_render()
 
+                    -- comp:text_component_render({
+                    --     comp:text_component("hasn't it been a long time since you've had a flying dream?",
+                    --         "center", "ProfileBlue"),
+                    -- })
+
                     comp:text_component_render({
-                        comp:text_component("think again", "center", "ProfileBlue"),
+                        comp:text_component("yes she goes to a different school",
+                            "center", "ProfileBlue"),
                     })
 
+                    comp:separator_render()
+
+                    comp:text_component_render({
+                        comp:text_component("no you would not know her and you cant talk to her", "center", "ProfileRed"),
+                    })
+
+                    comp:text_component_render({
+                        comp:text_component("because i said so", "center", "ProfileRed"),
+                    })
+                    comp:separator_render()
+                    comp:separator_render()
+                    comp:separator_render()
+                    comp:separator_render()
                     comp:separator_render()
                     comp:separator_render()
                     comp:separator_render()

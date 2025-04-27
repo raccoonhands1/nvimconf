@@ -1,5 +1,8 @@
 local map = require("helpers.keys").map
 
+-- autocenter cursor toggle
+vim.keymap.set({ 'n', 'v' }, '<leader>zz', require('stay-centered').toggle, { desc = 'Toggle stay-centered.nvim' })
+
 -- LSP keymaps to add to your keymaps.lua file
 local keymap = require("helpers.keys").map
 
@@ -27,8 +30,26 @@ keymap("n", "<leader>lm", "<cmd>Mason<cr>", "Mason")
 
 vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight<CR>', { desc = 'ColorScheme TokyoNight' })
 
+
+_G.nvim_tree_state = {
+    expanded = false
+}
+
+function _G.expand_collapse()
+    if _G.nvim_tree_state.expanded then
+        require("nvim-tree.api").tree.collapse_all()
+    else
+        require("nvim-tree.api").tree.expand_all()
+    end
+    _G.nvim_tree_state.expanded = not _G.nvim_tree_state.expanded
+end
+
+_G.toggle_tree_expand_collapse = toggle_tree_expand_collapse
+
+
 -- File explorer keymap
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle File Explorer' })
+vim.keymap.set('n', '<leader>E', ':lua _G.expand_collapse()<CR>', { noremap = true, silent = true })
 
 -- Telescope keymaps
 vim.keymap.set('n', '<leader>ff', function() require('telescope.builtin').find_files() end, { desc = 'Find Files' })
@@ -38,9 +59,9 @@ vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').help_t
 
 -- i set L D U R to be one key right because it feels awkward otherwise
 -- Down
-vim.keymap.set({ 'n', 'v' }, 'l', 'j', { desc = 'Move down' })
+vim.keymap.set({ 'n', 'v' }, 'l', 'k', { desc = 'Move down' })
 -- Up
-vim.keymap.set({ 'n', 'v' }, 'k', 'k', { desc = 'Move up' })
+vim.keymap.set({ 'n', 'v' }, 'k', 'j', { desc = 'Move up' })
 -- Right
 vim.keymap.set({ 'n', 'v' }, ';', 'l', { desc = 'Move right' })
 -- Left
@@ -64,10 +85,10 @@ map("n", "<M-j>", "^", "Go to beginning of line")
 map("n", "<M-;>", "$", "Go to end of line")
 
 -- Better window navigation
-map("n", "<C-j>", "<C-w><C-j>", "Navigate windows to the left")
-map("n", "<C-l>", "<C-w><C-l>", "Navigate windows down")
-map("n", "<C-k>", "<C-w><C-k>", "Navigate windows up")
-map("n", "<C-;>", "<C-w><C-;>", "Navigate windows to the right")
+map("n", "<C-j>", "<C-w><C-h>", "Navigate windows to the left")
+map("n", "<C-k>", "<C-w><C-j>", "Navigate windows down")
+map("n", "<C-l>", "<C-w><C-k>", "Navigate windows up")
+map("n", "<C-;>", "<C-w><C-l>", "Navigate windows to the right")
 
 -- Move with shift-arrows
 map("n", "<S-Left>", "<C-w><S-h>", "Move window to the left")
