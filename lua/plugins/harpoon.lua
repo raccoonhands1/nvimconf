@@ -4,7 +4,8 @@ return {
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
-            require("harpoon"):setup()
+            local harpoon = require("harpoon")
+            harpoon:setup()
         end,
         keys = {
             { "<leader>A", function() require("harpoon"):list():add() end,     desc = "harpoon file", },
@@ -27,9 +28,9 @@ return {
                 "<leader>=",
                 function()
                     local harpoon = require("harpoon")
-                    harpoon:term(9)
+                    local term = harpoon:term(9)
                     vim.defer_fn(function()
-                        harpoon:term(9):send("ls -La")
+                        term:send("ls -La")
                     end, 100)
                 end,
                 desc = "Open term 9 and send ls command"

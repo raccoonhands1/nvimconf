@@ -49,6 +49,7 @@ _G.toggle_tree_expand_collapse = toggle_tree_expand_collapse
 
 -- File explorer keymap
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle File Explorer' })
+vim.keymap.set('n', '<Esc>', ':NvimTreeClose<CR>', { desc = 'close file explorer' })
 vim.keymap.set('n', '<leader>E', ':lua _G.expand_collapse()<CR>', { noremap = true, silent = true })
 
 -- Telescope keymaps
@@ -67,6 +68,16 @@ vim.keymap.set({ 'n', 'v' }, ';', 'l', { desc = 'Move right' })
 -- Left
 vim.keymap.set({ 'n', 'v' }, 'j', 'h', { desc = 'Move left' })
 
+
+-- Down (C-w l becomes C-w j)
+vim.keymap.set('n', '<C-l>', '<C-w>k', { desc = 'Move to window below' })
+-- Up (C-w k becomes C-w k)
+vim.keymap.set('n', '<C-k>', '<C-w>j', { desc = 'Move to window above' })
+-- Right (C-w ; becomes C-w l)
+vim.keymap.set('n', '<C-;>', '<C-w>l', { desc = 'Move to window right' })
+-- Left (C-w j becomes C-w h)
+vim.keymap.set('n', '<C-j>', '<C-w>h', { desc = 'Move to window left' })
+
 -- Blazingly fast way out of insert mode
 map("i", "jk", "<esc>")
 
@@ -83,12 +94,6 @@ map('n', 'gx', vim.diagnostic.open_float, "Show diagnostics under cursor")
 -- Easier access to beginning and end of lines
 map("n", "<M-j>", "^", "Go to beginning of line")
 map("n", "<M-;>", "$", "Go to end of line")
-
--- Better window navigation
-map("n", "<C-j>", "<C-w><C-h>", "Navigate windows to the left")
-map("n", "<C-k>", "<C-w><C-j>", "Navigate windows down")
-map("n", "<C-l>", "<C-w><C-k>", "Navigate windows up")
-map("n", "<C-;>", "<C-w><C-l>", "Navigate windows to the right")
 
 -- Move with shift-arrows
 map("n", "<S-Left>", "<C-w><S-h>", "Move window to the left")
