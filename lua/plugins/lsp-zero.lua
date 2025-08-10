@@ -58,6 +58,10 @@ return {
             -- Configure Mason to automatically install LSP servers
             require('mason').setup({})
             require('mason-lspconfig').setup({
+                ensure_installed = {
+                    'ts_ls',  -- TypeScript/JavaScript
+                    'lua_ls', -- Lua
+                },
                 handlers = {
                     lsp_zero.default_setup,
                 },

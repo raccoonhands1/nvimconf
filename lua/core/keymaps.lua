@@ -48,7 +48,9 @@ _G.toggle_tree_expand_collapse = toggle_tree_expand_collapse
 
 
 -- File explorer keymap
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle File Explorer' })
+vim.keymap.set('n', '<leader>e', function()
+    require("nvim-tree.api").tree.find_file({ open = true, focus = true })
+end, { desc = 'Open File Explorer at current file' })
 vim.keymap.set('n', '<Esc>', ':NvimTreeClose<CR>', { desc = 'close file explorer' })
 vim.keymap.set('n', '<leader>E', ':lua _G.expand_collapse()<CR>', { noremap = true, silent = true })
 

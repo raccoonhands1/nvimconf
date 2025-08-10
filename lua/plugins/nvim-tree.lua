@@ -31,6 +31,19 @@ return {
                 renderer = {
                     group_empty = true,
                 },
+                on_attach = function(bufnr)
+                    local api = require("nvim-tree.api")
+                    local function opts(desc)
+                        return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+                    end
+                    api.config.mappings.default_on_attach(bufnr)
+                    vim.keymap.set("n", "<S-m>", function()
+                        local win_height = vim.api.nvim_win_get_height(0)
+                        local top_line = vim.fn.line("w0")
+                        local center_line = top_line + math.floor(win_height / 2)
+                        vim.api.nvim_win_set_cursor(0, { center_line, 0 })
+                    end, opts("Jump to center of visible window"))
+                end,
 
             })
         end,

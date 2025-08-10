@@ -4,6 +4,15 @@ return {
         config = function()
             local comp = require("profile.components")
 
+            local LOAD_SESSION = '`'
+            local LAZY = '1'
+            local ENEW = '2'
+            local NVIM = '3'
+            local FILES = '4'
+            local OLD_FILES = '5'
+            local LIVE_GREP = '/'
+            local COLORSCHEMES = '0'
+
             vim.api.nvim_set_hl(0, "ProfileDeepRed", { fg = "#400000" })
             vim.api.nvim_set_hl(0, "ProfileDeepBlue", { fg = "#0016a6" })
             vim.api.nvim_set_hl(0, "ProfileBlue", { fg = "#4287f5" })
@@ -33,6 +42,23 @@ return {
                 cursor_pos = { 16, 68 },
                 format = function()
                     -- First render the pixel face art in blue
+                    --
+                    -- --                     ["5"] = "<cmd>FzfLua oldfiles<cr>",
+                    -- ["4"] = "<cmd>FzfLua files<cr>",
+                    -- ["3"] = "<cmd>FzfLua files cwd=$HOME/.config/nvim<cr>",
+                    -- ["/"] = "<cmd>FzfLua live_grep<cr>",
+                    -- ["2"] = "<cmd>enew<cr>",
+                    -- ["1"] = "<cmd>Lazy<cr>",
+                    --
+
+                    local function_map = string.format(
+                        "%s * load session | %s * lazy | %s * enew | %s * nvim | %s * files | %s * oldfiles | %s * live grep | %s * colorschemes",
+                        LOAD_SESSION, LAZY, ENEW, NVIM, FILES, OLD_FILES, LIVE_GREP, COLORSCHEMES)
+
+
+                    comp:text_component_render({
+                        comp:text_component(function_map, "center", "ProfileRed")
+                    })
                     local face_art = {
                         [[                                                                       ]],
                         [[                                                                       ]],
@@ -143,14 +169,17 @@ return {
 
             local user_mappings = {
                 n = {
-                    ["5"] = "<cmd>FzfLua oldfiles<cr>",
-                    ["4"] = "<cmd>FzfLua files<cr>",
-                    ["3"] = "<cmd>FzfLua files cwd=$HOME/.config/nvim<cr>",
-                    ["/"] = "<cmd>FzfLua live_grep<cr>",
-                    ["2"] = "<cmd>enew<cr>",
-                    ["1"] = "<cmd>Lazy<cr>",
+                    [LOAD_SESSION] = "<cmd>SessionRestore<cr>",
+                    [OLD_FILES] = "<cmd>FzfLua oldfiles<cr>",
+                    [FILES] = "<cmd>FzfLua files<cr>",
+                    [NVIM] = "<cmd>FzfLua files cwd=$HOME/.config/nvim<cr>",
+                    [LIVE_GREP] = "<cmd>FzfLua live_grep<cr>",
+                    [ENEW] = "<cmd>enew<cr>",
+                    [LAZY] = "<cmd>Lazy<cr>",
+                    [COLORSCHEMES] = "<cmd>Telescope colorscheme<cr>"
                 },
             }
+
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = "profile",
                 callback = function()
