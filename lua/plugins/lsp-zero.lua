@@ -64,6 +64,16 @@ return {
                 },
                 handlers = {
                     lsp_zero.default_setup,
+                    ts_ls = function()
+                        require('lspconfig').ts_ls.setup({
+                            init_options = {
+                                preferences = {
+                                    updateImportsOnFileMove = { enabled = "always" },
+                                    includePackageJsonAutoImports = "auto",
+                                }
+                            }
+                        })
+                    end,
                 },
             })
 
