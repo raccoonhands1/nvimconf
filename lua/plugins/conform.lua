@@ -21,8 +21,20 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "isort", "black" },
-      javascript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = { "prettier" },
+      typescript = { "prettier" },
+      javascriptreact = { "prettier" },
+      typescriptreact = { "prettier" },
+      vue = { "prettier" },
+      css = { "prettier" },
+      scss = { "prettier" },
+      html = { "prettier" },
+      json = { "prettier" },
+      yaml = { "prettier" },
+      markdown = { "prettier" },
       cpp = { "clang-format" },
+      go = { "gofmt" },
+      cs = { "clang-format" },
     },
     -- Set default options
     default_format_opts = {
@@ -34,6 +46,9 @@ return {
     formatters = {
       shfmt = {
         prepend_args = { "-i", "2" },
+      },
+      prettier = {
+        require_cwd = true,
       },
     },
   },

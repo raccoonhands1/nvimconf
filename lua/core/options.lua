@@ -10,7 +10,8 @@ local opts = {
     cursorline = true,
     wrap = false,
     syntax = "on",
-    virtualedit = "all"
+    virtualedit = "all",
+    guicursor = "i:block"
 }
 
 -- Set options from table

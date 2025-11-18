@@ -59,22 +59,37 @@ return {
             require('mason').setup({})
             require('mason-lspconfig').setup({
                 ensure_installed = {
-                    'ts_ls',  -- TypeScript/JavaScript
-                    'lua_ls', -- Lua
+                    'ts_ls',      -- TypeScript/JavaScript (kept for fallback)
+                    'lua_ls',     -- Lua
+                    'gopls',      -- Go
+                    'omnisharp',  -- C#
                 },
                 handlers = {
                     lsp_zero.default_setup,
-                    ts_ls = function()
-                        require('lspconfig').ts_ls.setup({
-                            init_options = {
-                                preferences = {
-                                    updateImportsOnFileMove = { enabled = "always" },
-                                    includePackageJsonAutoImports = "auto",
-                                }
-                            }
-                        })
-                    end,
+                    -- Skip ts_ls setup since typescript-tools.nvim handles it
+                    ts_ls = function() end,
                 },
+            })
+
+            -- Godot LSP setup (doesn't use Mason)
+            local lspconfig = require('lspconfig')
+
+            -- GDScript setup for Godot
+            lspconfig.gdscript.setup({
+                capabilities = lsp_zero.get_capabilities(),
+                flags = {
+                    debounce_text_changes = 150,
+                },
+                filetypes = { "gd", "gdscript", "gdscript3" },
+            })
+
+            -- OmniSharp setup for C# (including Godot C# projects)
+            lspconfig.omnisharp.setup({
+                capabilities = lsp_zero.get_capabilities(),
+                cmd = { "omnisharp" },
+                enable_roslyn_analyzers = true,
+                organize_imports_on_format = true,
+                enable_import_completion = true,
             })
 
             -- Setup nvim-cmp for autocompletion

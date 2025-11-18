@@ -31,28 +31,23 @@ keymap("n", "<leader>lm", "<cmd>Mason<cr>", "Mason")
 vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight<CR>', { desc = 'ColorScheme TokyoNight' })
 
 
-_G.nvim_tree_state = {
+_G.neo_tree_state = {
     expanded = false
 }
 
 function _G.expand_collapse()
-    if _G.nvim_tree_state.expanded then
-        require("nvim-tree.api").tree.collapse_all()
+    if _G.neo_tree_state.expanded then
+        require("neo-tree.command").execute({ action = "close_all_nodes" })
     else
-        require("nvim-tree.api").tree.expand_all()
+        require("neo-tree.command").execute({ action = "expand_all_nodes" })
     end
-    _G.nvim_tree_state.expanded = not _G.nvim_tree_state.expanded
+    _G.neo_tree_state.expanded = not _G.neo_tree_state.expanded
 end
-
-_G.toggle_tree_expand_collapse = toggle_tree_expand_collapse
 
 
 -- File explorer keymap
-vim.keymap.set('n', '<leader>e', function()
-    require("nvim-tree.api").tree.find_file({ open = true, focus = true })
-end, { desc = 'Open File Explorer at current file' })
-vim.keymap.set('n', '<Esc>', ':NvimTreeClose<CR>', { desc = 'close file explorer' })
-vim.keymap.set('n', '<leader>E', ':lua _G.expand_collapse()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal float<CR>', { desc = 'Open File Explorer at current file' })
+vim.keymap.set('n', '<leader>E', ':Neotree filesystem toggle float<CR>', { desc = 'Toggle File Explorer' })
 
 -- Telescope keymaps
 vim.keymap.set('n', '<leader>ff', function() require('telescope.builtin').find_files() end, { desc = 'Find Files' })
