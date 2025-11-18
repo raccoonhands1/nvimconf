@@ -71,25 +71,18 @@ return {
                 },
             })
 
-            -- Godot LSP setup (doesn't use Mason)
-            local lspconfig = require('lspconfig')
+            -- Godot GDScript LSP setup using modern vim.lsp.config
+            vim.lsp.config.gdscript = {
+                cmd = { 'nc', 'localhost', '6005' },
+                filetypes = { 'gd', 'gdscript', 'gdscript3' },
+                root_dir = vim.fs.dirname(vim.fs.find({ 'project.godot', '.git' }, { upward = true })[1]),
+            }
 
-            -- GDScript setup for Godot
-            lspconfig.gdscript.setup({
-                capabilities = lsp_zero.get_capabilities(),
-                flags = {
-                    debounce_text_changes = 150,
-                },
-                filetypes = { "gd", "gdscript", "gdscript3" },
-            })
-
-            -- OmniSharp setup for C# (including Godot C# projects)
-            lspconfig.omnisharp.setup({
-                capabilities = lsp_zero.get_capabilities(),
-                cmd = { "omnisharp" },
-                enable_roslyn_analyzers = true,
-                organize_imports_on_format = true,
-                enable_import_completion = true,
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = { 'gd', 'gdscript', 'gdscript3' },
+                callback = function()
+                    vim.lsp.start({ name = 'gdscript', config = vim.lsp.config.gdscript })
+                end,
             })
 
             -- Setup nvim-cmp for autocompletion
