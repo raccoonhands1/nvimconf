@@ -128,7 +128,7 @@ return {
                     ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
                     -- Custom navigation to match your keymaps: l=up, k=down, j=left, ;=right
                     ["l"] = "prev_sibling",
-                    ["k"] = "next_sibling", 
+                    ["k"] = "next_sibling",
                     ["j"] = "close_node",
                     [";"] = "open",
                     ["S"] = "open_split",

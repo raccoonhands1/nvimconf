@@ -59,15 +59,26 @@ return {
             require('mason').setup({})
             require('mason-lspconfig').setup({
                 ensure_installed = {
-                    'ts_ls',      -- TypeScript/JavaScript (kept for fallback)
-                    'lua_ls',     -- Lua
-                    'gopls',      -- Go
-                    'omnisharp',  -- C#
+                    'ts_ls',     -- TypeScript/JavaScript (kept for fallback)
+                    'lua_ls',    -- Lua
+                    'gopls',     -- Go
+                    'omnisharp', -- C#
+                    'clangd',    -- C/C++
+                    'pyright',   -- Python
                 },
                 handlers = {
                     lsp_zero.default_setup,
-                    -- Skip ts_ls setup since typescript-tools.nvim handles it
                     ts_ls = function() end,
+                    clangd = function()
+                        require('lspconfig').clangd.setup({
+                            cmd = {
+                                'clangd',
+                                '--background-index',
+                                '--header-insertion=never',
+                                '--clang-tidy',
+                            },
+                        })
+                    end,
                 },
             })
 

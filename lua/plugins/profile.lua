@@ -11,6 +11,7 @@ return {
             local FILES = '4'
             local OLD_FILES = '5'
             local LIVE_GREP = '/'
+            local SWAP_TO_DARK_MODE = '9'
             local COLORSCHEMES = '0'
 
             vim.api.nvim_set_hl(0, "ProfileDeepRed", { fg = "#400000" })
@@ -52,8 +53,8 @@ return {
                     --
 
                     local function_map = string.format(
-                        "%s * load session | %s * lazy | %s * enew | %s * nvim | %s * files | %s * oldfiles | %s * live grep | %s * colorschemes",
-                        LOAD_SESSION, LAZY, ENEW, NVIM, FILES, OLD_FILES, LIVE_GREP, COLORSCHEMES)
+                        "%s * load session | %s * lazy | %s * enew | %s * nvim | %s * files | %s * oldfiles | %s * live grep | %s * dark mode | %s * colorschemes",
+                        LOAD_SESSION, LAZY, ENEW, NVIM, FILES, OLD_FILES, LIVE_GREP, SWAP_TO_DARK_MODE, COLORSCHEMES)
 
 
                     comp:text_component_render({
@@ -176,6 +177,7 @@ return {
                     [LIVE_GREP] = "<cmd>FzfLua live_grep<cr>",
                     [ENEW] = "<cmd>enew<cr>",
                     [LAZY] = "<cmd>Lazy<cr>",
+                    [SWAP_TO_DARK_MODE] = "<cmd>colorscheme tokyonight-night<cr>",
                     [COLORSCHEMES] = "<cmd>Telescope colorscheme<cr>"
                 },
             }
