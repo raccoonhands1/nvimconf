@@ -65,6 +65,7 @@ return {
                     'omnisharp', -- C#
                     'clangd',    -- C/C++
                     'pyright',   -- Python
+                    'bashls'
                 },
                 handlers = {
                     lsp_zero.default_setup,

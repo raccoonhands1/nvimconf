@@ -3,72 +3,108 @@ return {
     dependencies = { "rafamadriz/friendly-snippets" },
     config = function()
         local ls = require("luasnip")
+        require("plugins.luasnip-snippets.headers")
+        require("plugins.luasnip-snippets.comments")
         local s = ls.snippet
         local t = ls.text_node
         local i = ls.insert_node
         local f = ls.function_node
 
-        -- Get current date
+        -- ============================================================================
+        -- HELPER FUNCTIONS
+        -- ============================================================================
+
         local function get_date()
             return os.date("%Y-%m-%d")
         end
 
-        -- Function comment template
+        -- ============================================================================
+        -- ALL FILETYPES
+        -- ============================================================================
+
         ls.add_snippets("all", {
+            s("mk", { t("%%%%") }),
+        })
+
+        -- ============================================================================
+        -- JAVASCRIPT / TYPESCRIPT
+        -- ============================================================================
+
+        local js_ts_snippets = {
             s("funccomment", {
                 t("/**"),
-                t({"", " * @summary "}), i(1, "Description"),
-                t({"", " * @param {"}), i(2, "type"), t("} "), i(3, "paramName"), t(" - "), i(4, "parameter description"),
-                t({"", " * @returns {"}), i(5, "type"), t("} "), i(6, "return description"),
-                t({"", " * @example", " * "}), i(7, "example usage"),
-                t({"", " */"}),
+                t({ "", " * @summary " }), i(1, "Description"),
+                t({ "", " * @param {" }), i(2, "type"), t("} "), i(3, "paramName"), t(" - "), i(4,
+                "parameter description"),
+                t({ "", " * @returns {" }), i(5, "type"), t("} "), i(6, "return description"),
+                t({ "", " * @example", " * " }), i(7, "example usage"),
+                t({ "", " */" }),
             }),
-        })
 
-        -- TypeScript header comment
-        ls.add_snippets("all", {
-            s("tsheader", {
-                t("/**"),
-                t({"", " * @description "}), i(1, "Brief description"),
-                t({"", " * ", " * "}), i(2, "Detailed explanation"),
-                t({"", " * ", " * @author Clayton"}),
-                t({"", " * @date "}), f(get_date, {}),
-                t({"", " * ", " * @see {@link "}), i(3, "url"), t("} "), i(4, "for more info"),
-                t({"", " */"}),
-            }),
-        })
-
-        -- React FC component
-        ls.add_snippets("all", {
             s("reactfc", {
                 t("interface "), i(1, "ComponentName"), t("Props {"),
-                t({"", "  "}), i(2, "// props here"),
-                t({"", "}"}),
-                t({"", "", "const "}), f(function(args) return args[1][1] end, {1}), t(": React.FC<"), f(function(args) return args[1][1] end, {1}), t("Props> = (props) => {"),
-                t({"", "  "}), i(3, "return <div></div>;"),
-                t({"", "};"}),
-                t({"", "", "export default "}), f(function(args) return args[1][1] end, {1}), t(";"),
+                t({ "", "  " }), i(2, "// props here"),
+                t({ "", "}" }),
+                t({ "", "", "const " }), f(function(args) return args[1][1] end, { 1 }), t(": React.FC<"), f(
+                function(args) return args[1][1] end, { 1 }), t("Props> = (props) => {"),
+                t({ "", "  " }), i(3, "return <div></div>;"),
+                t({ "", "};" }),
+                t({ "", "", "export default " }), f(function(args) return args[1][1] end, { 1 }), t(";"),
             }),
+        }
+
+        ls.add_snippets("javascript", js_ts_snippets)
+        ls.add_snippets("typescript", js_ts_snippets)
+        ls.add_snippets("javascriptreact", js_ts_snippets)
+        ls.add_snippets("typescriptreact", js_ts_snippets)
+
+        -- ============================================================================
+        -- C++ LANGUAGE
+        -- ============================================================================
+
+        ls.add_snippets("cpp", {
         })
+
+        -- ============================================================================
+        -- C / C++ SHARED
+        -- ============================================================================
+
+        local c_cpp_snippets = {
+            s("guard", {
+                t("#ifndef "), i(1, "HEADER_H"),
+                t({ "", "#define " }), f(function(args) return args[1][1] end, { 1 }),
+                t({ "", "" }), i(2, "// header content"),
+                t({ "", "", "#endif // " }), f(function(args) return args[1][1] end, { 1 }),
+            }),
+
+            s("func", {
+                i(1, "void"), t(" "), i(2, "function_name"), t("("), i(3, ""), t(") {"),
+                t({ "", "    " }), i(0, ""),
+                t({ "", "}" }),
+            }),
+        }
+
+        ls.add_snippets("c", c_cpp_snippets)
+        ls.add_snippets("cpp", c_cpp_snippets)
 
         -- Configure luasnip
         ls.config.set_config({
             history = true,
             updateevents = "TextChanged,TextChangedI",
-            enable_autosnippets = true,
         })
 
-        -- Jump forward/backward in snippet
-        vim.keymap.set({"i", "s"}, "<C-j>", function()
-            if ls.jumpable(1) then
-                ls.jump(1)
+        -- Ctrl+l to expand snippet or jump forward (down/next in jkl; layout)
+        vim.keymap.set({ "i", "s" }, "<C-l>", function()
+            if ls.expand_or_jumpable() then
+                ls.expand_or_jump()
             end
-        end, { desc = "Jump to next snippet node" })
+        end, { silent = true })
 
-        vim.keymap.set({"i", "s"}, "<C-k>", function()
+        -- Ctrl+k to jump backward (up/previous in jkl; layout)
+        vim.keymap.set({ "i", "s" }, "<C-k>", function()
             if ls.jumpable(-1) then
                 ls.jump(-1)
             end
-        end, { desc = "Jump to previous snippet node" })
+        end, { silent = true })
     end,
 }

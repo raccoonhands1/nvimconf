@@ -65,15 +65,20 @@ vim.keymap.set({ 'n', 'v' }, ';', 'l', { desc = 'Move right' })
 -- Left
 vim.keymap.set({ 'n', 'v' }, 'j', 'h', { desc = 'Move left' })
 
+-- f/t jump list navigation (since ; is remapped)
+vim.keymap.set({ 'n', 'v' }, '\\', ';', { desc = 'Repeat last f/F/t/T forward' })
+vim.keymap.set({ 'n', 'v' }, '|', ',', { desc = 'Repeat last f/F/t/T backward' })
 
--- Down (C-w l becomes C-w j)
-vim.keymap.set('n', '<C-l>', '<C-w>k', { desc = 'Move to window below' })
--- Up (C-w k becomes C-w k)
-vim.keymap.set('n', '<C-k>', '<C-w>j', { desc = 'Move to window above' })
--- Right (C-w ; becomes C-w l)
-vim.keymap.set('n', '<C-;>', '<C-w>l', { desc = 'Move to window right' })
--- Left (C-w j becomes C-w h)
-vim.keymap.set('n', '<C-j>', '<C-w>h', { desc = 'Move to window left' })
+
+-- Window navigation with Ctrl+Shift
+-- Down (C-S-l goes down)
+vim.keymap.set('n', '<C-S-l>', '<C-w>k', { desc = 'Move to window below' })
+-- Up (C-S-k goes up)
+vim.keymap.set('n', '<C-S-k>', '<C-w>j', { desc = 'Move to window above' })
+-- Right (C-S-; goes right)
+vim.keymap.set('n', '<C-S-;>', '<C-w>l', { desc = 'Move to window right' })
+-- Left (C-S-j goes left)
+vim.keymap.set('n', '<C-S-j>', '<C-w>h', { desc = 'Move to window left' })
 
 -- Blazingly fast way out of insert mode
 map("i", "jk", "<esc>")
@@ -114,6 +119,11 @@ map("n", "<leader>da", buffers.delete_all, "All buffers")
 map("n", "<S-;>", ":bnext<CR>")
 map("n", "<S-j>", ":bprevious<CR>")
 
+-- Tab navigation
+map("n", "<C-t>", ":tabnew<CR>", "New tab")
+map("n", "<C-Tab>", ":tabnext<CR>", "Next tab")
+map("n", "<C-S-Tab>", ":tabprevious<CR>", "Previous tab")
+
 -- Stay in indent mode
 map("v", "<", "<gv")
 map("v", ">", ">gv")
@@ -129,3 +139,6 @@ end, "Toggle between light and dark themes")
 
 -- Clear after search
 map("n", "<leader>ur", "<cmd>nohl<cr>", "Clear highlights")
+
+-- Terminal mode escape
+map("t", "<C-Esc>", "<C-\\><C-n>", "Exit terminal mode")
