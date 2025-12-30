@@ -5,6 +5,7 @@ return {
         local ls = require("luasnip")
         require("plugins.luasnip-snippets.headers")
         require("plugins.luasnip-snippets.comments")
+        require("plugins.luasnip-snippets.fns")
         local s = ls.snippet
         local t = ls.text_node
         local i = ls.insert_node
@@ -25,38 +26,6 @@ return {
         ls.add_snippets("all", {
             s("mk", { t("%%%%") }),
         })
-
-        -- ============================================================================
-        -- JAVASCRIPT / TYPESCRIPT
-        -- ============================================================================
-
-        local js_ts_snippets = {
-            s("funccomment", {
-                t("/**"),
-                t({ "", " * @summary " }), i(1, "Description"),
-                t({ "", " * @param {" }), i(2, "type"), t("} "), i(3, "paramName"), t(" - "), i(4,
-                "parameter description"),
-                t({ "", " * @returns {" }), i(5, "type"), t("} "), i(6, "return description"),
-                t({ "", " * @example", " * " }), i(7, "example usage"),
-                t({ "", " */" }),
-            }),
-
-            s("reactfc", {
-                t("interface "), i(1, "ComponentName"), t("Props {"),
-                t({ "", "  " }), i(2, "// props here"),
-                t({ "", "}" }),
-                t({ "", "", "const " }), f(function(args) return args[1][1] end, { 1 }), t(": React.FC<"), f(
-                function(args) return args[1][1] end, { 1 }), t("Props> = (props) => {"),
-                t({ "", "  " }), i(3, "return <div></div>;"),
-                t({ "", "};" }),
-                t({ "", "", "export default " }), f(function(args) return args[1][1] end, { 1 }), t(";"),
-            }),
-        }
-
-        ls.add_snippets("javascript", js_ts_snippets)
-        ls.add_snippets("typescript", js_ts_snippets)
-        ls.add_snippets("javascriptreact", js_ts_snippets)
-        ls.add_snippets("typescriptreact", js_ts_snippets)
 
         -- ============================================================================
         -- C++ LANGUAGE
