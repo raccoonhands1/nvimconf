@@ -9,7 +9,8 @@ return {
 
             -- Set up keymaps directly instead of lazy loading
             vim.keymap.set("n", "<leader>A", function() harpoon:list():add() end, { desc = "harpoon file" })
-            vim.keymap.set("n", "<leader>a", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "harpoon quick menu" })
+            vim.keymap.set("n", "<leader>a", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+                { desc = "harpoon quick menu" })
             vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end, { desc = "harpoon to file 3" })
             vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end, { desc = "harpoon to file 4" })
             vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end, { desc = "harpoon to file 5" })

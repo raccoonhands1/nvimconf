@@ -70,15 +70,15 @@ vim.keymap.set({ 'n', 'v' }, '\\', ';', { desc = 'Repeat last f/F/t/T forward' }
 vim.keymap.set({ 'n', 'v' }, '|', ',', { desc = 'Repeat last f/F/t/T backward' })
 
 
--- Window navigation with Ctrl+Shift
--- Down (C-S-l goes down)
-vim.keymap.set('n', '<C-S-l>', '<C-w>k', { desc = 'Move to window below' })
--- Up (C-S-k goes up)
-vim.keymap.set('n', '<C-S-k>', '<C-w>j', { desc = 'Move to window above' })
--- Right (C-S-; goes right)
-vim.keymap.set('n', '<C-S-;>', '<C-w>l', { desc = 'Move to window right' })
--- Left (C-S-j goes left)
-vim.keymap.set('n', '<C-S-j>', '<C-w>h', { desc = 'Move to window left' })
+-- Window navigation with Ctrl
+-- Down (C-l goes down, since l maps to k/down)
+vim.keymap.set('n', '<C-l>', '<C-w>k', { desc = 'Move to window below' })
+-- Up (C-k goes up, since k maps to j/up)
+vim.keymap.set('n', '<C-k>', '<C-w>j', { desc = 'Move to window above' })
+-- Right (C-; goes right, since ; maps to l/right)
+vim.keymap.set('n', '<C-;>', '<C-w>l', { desc = 'Move to window right' })
+-- Left (C-j goes left, since j maps to h/left)
+vim.keymap.set('n', '<C-j>', '<C-w>h', { desc = 'Move to window left' })
 
 -- Blazingly fast way out of insert mode
 map("i", "jk", "<esc>")

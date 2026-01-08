@@ -6,6 +6,7 @@ return {
         require("plugins.luasnip-snippets.headers")
         require("plugins.luasnip-snippets.comments")
         require("plugins.luasnip-snippets.fns")
+        require("plugins.luasnip-snippets.entry_shorthand")
         local s = ls.snippet
         local t = ls.text_node
         local i = ls.insert_node

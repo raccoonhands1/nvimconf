@@ -5,11 +5,9 @@ local i = ls.insert_node
 
 local entry_snippet_v_1 = {
     s("main", {
-        t("using namespace std;"),
-        t({ "", "", "int main() {" }),
-        t({ "", "    " }), i(1, ""),
-        t({ "", "    return 0;" }),
-        t({ "", "}" }),
+        t({ "#include <iostream>", "using namespace std;", "", "int main() {", "    cout << " }),
+        i(1, "\"Hello, World!\\n\""),
+        t({ ";", "    return 0;", "}" }),
     })
 }
 
