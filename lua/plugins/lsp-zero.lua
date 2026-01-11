@@ -80,6 +80,26 @@ return {
                             },
                         })
                     end,
+                    pyright = function()
+                        require('lspconfig').pyright.setup({
+                            settings = {
+                                python = {
+                                    analysis = {
+                                        autoSearchPaths = true,
+                                        useLibraryCodeForTypes = true,
+                                        diagnosticMode = 'workspace',
+                                    },
+                                },
+                            },
+                            before_init = function(_, config)
+                                local Path = require('plenary.path')
+                                local venv = os.getenv('VIRTUAL_ENV')
+                                if venv then
+                                    config.settings.python.pythonPath = Path:new(venv, 'bin', 'python'):absolute()
+                                end
+                            end,
+                        })
+                    end,
                 },
             })
 
